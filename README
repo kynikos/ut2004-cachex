@@ -1,0 +1,5 @@
+UT2004 Cache Extractor - This script moves the downloaded Unreal Tournament
+2004 *.uxx cache files from the specified Cache directory to the corresponding
+ut2004 subdirectories, renaming them with their real name.
+
+License: GPLv3 (see LICENSE).

@@ -1,0 +1,21 @@
+(Sorry this is still in Italian...)
+
+* Splittare main in varie funzioni
+* Fare una versione senza colori ANSI
+* Scrivere === PREVIEW === solo se c'è qualcosa da scrivere sotto
+* Chiedere se rimuovere le linee non riconosciute o che corrispondono a file
+    mancanti nella cache
+    chiedere solo una volta per tutte le linee (Do you want to remove the
+    useless lines? [y|n]) prima di chiedere se spostare i file
+  attenzione ché al momento se non ci sono file da spostare, il programma
+    esce senza chiedere nulla
+    attenzione ché al momento cache.ini viene scritto solo se dei file
+    vengono realmente spostati (if moves > 0: else:)
+* Opzione solo per controllare lo stato di cache.ini (che non ci siano voci
+    errate)
+    chiedere se fare delle correzioni automatiche
+* Modalità silenziosa?
+* In fondo viene mostrato anche il numero di errori accaduti: il problema è che
+    sono contati solo quelli durante il trasferimento dei file, ma possono
+    anche verificarsene prima (o dopo?)
+  togliere completamente?
