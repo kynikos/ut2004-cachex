@@ -1,5 +1,5 @@
 # UT2004 CacheX - Unreal Tournament 2004 cache extraction utility for Linux.
-# Copyright (C) 2011 Dario Giovannetti <dev@dariogiovannetti.com>
+# Copyright (C) 2011 Dario Giovannetti <dev@dariogiovannetti.net>
 #
 # This file is part of UT2004 CacheX.
 #
@@ -22,7 +22,7 @@ cache files from the specified Cache directory to the corresponding ut2004
 subdirectories, renaming them with their real name.
 
 @author: Dario Giovannetti
-@copyright: Copyright (C) 2011 Dario Giovannetti <dev@dariogiovannetti.com>
+@copyright: Copyright (C) 2011 Dario Giovannetti <dev@dariogiovannetti.net>
 @license: GPLv3
 @version: 0.9
 @date: 2011-11-28
