@@ -22,10 +22,10 @@ cache files from the specified Cache directory to the corresponding ut2004
 subdirectories, renaming them with their real name.
 
 @author: Dario Giovannetti
-@copyright: Copyright (C) 2011 Dario Giovannetti <dev@dariogiovannetti.net>
+@copyright: Copyright (C) 2011-2013 Dario Giovannetti <dev@dariogiovannetti.net>
 @license: GPLv3
-@version: 0.9
-@date: 2011-11-28
+@version: 0.10
+@date: 2013-03-26
 """
 
 import logging
@@ -97,46 +97,17 @@ logconfig = {
     'handlers': {
         'console': {
             'class': 'loggingext.StreamHandler',
-            'level': ('CRITICAL', 'ERROR', 'INFO',
-                                                 'DEBUG')[loglevel['console']],
-            'formatters': {
-                'debug': ('simplecol_default', 'simplecol_cyan',
-                                       'simplecol_cyan',
-                                       'verbosecol_cyan')[loglevel['console']],
-                'info': ('simplecol_default', 'simplecol_info',
-                                       'simplecol_info',
-                                       'verbosecol_info')[loglevel['console']],
-                'warning': ('simplecol_default', 'simplecol_yellow',
-                                     'simplecol_yellow',
-                                     'verbosecol_yellow')[loglevel['console']],
-                'error': ('simplecol_default', 'simplecol_red',
-                       'simplecol_red', 'verbosecol_red')[loglevel['console']],
-                'critical': ('simplecol_default', 'simplecol_red',
-                                         'simplecol_red',
-                                        'verbosecol_red')[loglevel['console']],
-                'default': ('simplecol_default', 'simplecol_default',
-                                     'simplecol_default',
-                                     'verbosecol_default')[loglevel['console']]
-            },
+            'level': ('CRITICAL', 'ERROR', 'INFO', 'DEBUG')[loglevel['console']
+                                                                              ],
+            'formatter': ('simplecol_default', 'simplecol_default',
+                          'simplecol_default', 'verbosecol_default')[loglevel[
+                                                                    'console']],
         },
         'file': {
             'class': 'loggingext.RotatingFileHandler',
-            'level': ('CRITICAL', 'WARNING', 'INFO', 'DEBUG')[loglevel['file']
-                                                                             ],
-            'formatters': {
-                'debug': ('simple', 'simple', 'simple',
-                                                  'verbose')[loglevel['file']],
-                'info': ('simple', 'simple', 'simple',
-                                                  'verbose')[loglevel['file']],
-                'warning': ('simple', 'verbose', 'verbose',
-                                                  'verbose')[loglevel['file']],
-                'error': ('simple', 'verbose', 'verbose',
-                                                  'verbose')[loglevel['file']],
-                'critical': ('simple', 'verbose', 'verbose',
-                                                  'verbose')[loglevel['file']],
-                'default': ('simple', 'simple', 'simple',
-                                                   'verbose')[loglevel['file']]
-            },
+            'level': ('CRITICAL', 'WARNING', 'INFO', 'DEBUG')[loglevel['file']],
+            'formatter': ('simple', 'simple', 'simple', 'verbose')[loglevel[
+                                                                       'file']],
             'filename': config.get('logfile'),
             'maxBytes': (1, 10000, 30000, 100000)[loglevel['file']],
             'backupCount': 1,
@@ -163,6 +134,34 @@ logconfig = {
     }
 }
 
-logging.config.dictConfig(logconfig)
+formconfig = {
+    'console': {
+        'debug': ('simplecol_default', 'simplecol_cyan',
+                               'simplecol_cyan',
+                               'verbosecol_cyan')[loglevel['console']],
+        'info': ('simplecol_default', 'simplecol_info',
+                               'simplecol_info',
+                               'verbosecol_info')[loglevel['console']],
+        'warning': ('simplecol_default', 'simplecol_yellow',
+                             'simplecol_yellow',
+                             'verbosecol_yellow')[loglevel['console']],
+        'error': ('simplecol_default', 'simplecol_red',
+               'simplecol_red', 'verbosecol_red')[loglevel['console']],
+        'critical': ('simplecol_default', 'simplecol_red',
+                                 'simplecol_red',
+                                'verbosecol_red')[loglevel['console']],
+    },
+    'file': {
+        'warning': ('simple', 'verbose', 'verbose',
+                                          'verbose')[loglevel['file']],
+        'error': ('simple', 'verbose', 'verbose',
+                                          'verbose')[loglevel['file']],
+        'critical': ('simple', 'verbose', 'verbose',
+                                          'verbose')[loglevel['file']],
+    },
+}
+
+logging.setLoggerClass(loggingext.Logger)
+loggingext.dictConfig(logconfig, formconfig)
 
 logger = logging.getLogger('custom1')
